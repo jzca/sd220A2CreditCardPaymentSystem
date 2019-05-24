@@ -19,7 +19,8 @@ namespace sd220A2WebApi.Models.Domain
         [CreditCard]
         public int CreditCardNumber { get; set; }
         [Required]
-        [StringLength(4)]
+        [MinLength(3)]
+        [MaxLength(4)]
         public string SecurityCode { get; set; }
     }
 }
