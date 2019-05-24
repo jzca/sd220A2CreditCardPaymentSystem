@@ -1,5 +1,6 @@
 namespace sd220A2WebApi.Migrations
 {
+    using sd220A2WebApi.Models.Domain;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -14,10 +15,11 @@ namespace sd220A2WebApi.Migrations
 
         protected override void Seed(sd220A2WebApi.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            context.CreditCardBrand.AddOrUpdate(p => p.IdentificationNumber,
+                new CreditCardBrand { IdentificationNumber = "011", Brand = "Visa" },
+                new CreditCardBrand { IdentificationNumber = "021", Brand = "Mastercard" },
+                new CreditCardBrand { IdentificationNumber = "031", Brand = "American Express" }
+            );
         }
     }
 }

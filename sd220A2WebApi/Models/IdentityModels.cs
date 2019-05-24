@@ -1,8 +1,10 @@
-﻿using System.Security.Claims;
+﻿using System.Data.Entity;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using sd220A2WebApi.Models.Domain;
 
 namespace sd220A2WebApi.Models
 {
@@ -24,6 +26,9 @@ namespace sd220A2WebApi.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        public DbSet<CreditCardBrand> CreditCardBrand { get; set; }
+        public DbSet<Payment> Payments { get; set; }
         
         public static ApplicationDbContext Create()
         {

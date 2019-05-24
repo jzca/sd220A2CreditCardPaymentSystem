@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using sd220A2WebApi.Models;
-//using sd220A2WebApi.Models.Domain;
-//using sd220A2WebApi.Models.BindViewModel;
+using sd220A2WebApi.Models.Domain;
+using sd220A2WebApi.Models.BindViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +15,9 @@ namespace HouseholdBudgeterAPI.App_Start
         {
             Mapper.Initialize(cfg =>
             {
-                //cfg.CreateMap<Household, HouseholdBindingModel>().ReverseMap();
-                //cfg.CreateMap<Household, HouseholdViewModel>().ReverseMap();                
+                cfg.CreateMap<CreditCardBrand, CreditCardBrandViewModel>().ReverseMap();
+                cfg.CreateMap<Payment, PaymentBindingModel>().ReverseMap();
+                cfg.CreateMap<Payment, PaymentViewModel>().ReverseMap();
             });
         }
     }
