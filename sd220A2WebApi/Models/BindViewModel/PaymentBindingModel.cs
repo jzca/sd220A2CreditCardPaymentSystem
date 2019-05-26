@@ -17,7 +17,7 @@ namespace sd220A2WebApi.Models.Domain
         public string NameOnCard { get; set; }
         [Required]
         [CreditCard]
-        public int CreditCardNumber { get; set; }
+        public string CreditCardNumber { get; set; }
         [Required]
         [MinLength(3)]
         [MaxLength(4)]

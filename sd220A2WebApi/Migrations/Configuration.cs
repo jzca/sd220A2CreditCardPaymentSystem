@@ -15,7 +15,7 @@ namespace sd220A2WebApi.Migrations
 
         protected override void Seed(sd220A2WebApi.Models.ApplicationDbContext context)
         {
-            context.CreditCardBrand.AddOrUpdate(p => p.IdentificationNumber,
+            context.CreditCardBrands.AddOrUpdate(p => p.IdentificationNumber,
                 new CreditCardBrand { IdentificationNumber = "011", Brand = "Visa" },
                 new CreditCardBrand { IdentificationNumber = "021", Brand = "Mastercard" },
                 new CreditCardBrand { IdentificationNumber = "031", Brand = "American Express" }

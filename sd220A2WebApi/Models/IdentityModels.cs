@@ -27,7 +27,7 @@ namespace sd220A2WebApi.Models
         {
         }
 
-        public DbSet<CreditCardBrand> CreditCardBrand { get; set; }
+        public DbSet<CreditCardBrand> CreditCardBrands { get; set; }
         public DbSet<Payment> Payments { get; set; }
         
         public static ApplicationDbContext Create()

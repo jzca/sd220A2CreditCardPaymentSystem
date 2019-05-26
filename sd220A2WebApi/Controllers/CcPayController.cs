@@ -25,7 +25,7 @@ namespace sd220A2WebApi.Controllers
         public IHttpActionResult GetAllCcb()
         {
             var ccbsModel = DbContext
-                .CreditCardBrand
+                .CreditCardBrands
                 .ProjectTo<CreditCardBrandViewModel>()
                 .ToList();
 
@@ -35,16 +35,21 @@ namespace sd220A2WebApi.Controllers
         [HttpPost]
         public IHttpActionResult CreatePayment(PaymentBindingModel formData)
         {
+            if (formData == null)
+            {
+                return BadRequest();
+            }
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
             var Ccb = DbContext
-                .CreditCardBrand
+                .CreditCardBrands
                 .FirstOrDefault(p => p.Id == formData.CreditCardBrandId);
 
-            if(Ccb == null)
+            if (Ccb == null)
             {
                 ModelState.AddModelError("CreditCardBrandId",
                     "This is not valid. No record in the system.");
@@ -57,6 +62,14 @@ namespace sd220A2WebApi.Controllers
                     "It must be greater than 0.");
                 return BadRequest(ModelState);
             }
+
+            if (!formData.SecurityCode.All(char.IsDigit))
+            {
+                ModelState.AddModelError("SecurityCode",
+                    "It must be a number");
+                return BadRequest(ModelState);
+            }
+
 
             var payment = Mapper.Map<Payment>(formData);
 
